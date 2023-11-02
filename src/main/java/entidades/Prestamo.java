@@ -1,5 +1,6 @@
 package entidades;
 import java.util.Calendar;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -35,10 +38,6 @@ public class Prestamo {
 	private Calendar fchEntregaPrestamo;
 	
 	@ManyToOne
-    @JoinColumn(name="id_libro")
-    Libro libro;
-	
-	@ManyToOne
     @JoinColumn(name="id_usuario")
     Usuario usuario;
 	
@@ -46,21 +45,30 @@ public class Prestamo {
     @JoinColumn(name="id_estado_prestamo")
     Estado_Prestamo estadoPrestamo;
 	
+	@ManyToMany
+    @JoinTable(
+        name = "libro_prestamo", schema="gbp_operacional",
+        joinColumns = @JoinColumn(name = "id_prestamo"),
+        inverseJoinColumns = @JoinColumn(name = "id_libro")
+    )
+	private List<Libro> libros;
+	
+	
 	//CONSTRUCTORES
 	public Prestamo() {
 		super();
 	}
 
 	public Prestamo(long idPrestamo, Calendar fchInicioPrestamo, Calendar fchFinPrestamo, Calendar fchEntregaPrestamo,
-			Libro libro, Usuario usuario, Estado_Prestamo estadoPrestamo) {
+			Usuario usuario, Estado_Prestamo estadoPrestamo, List<Libro> libros) {
 		super();
 		this.idPrestamo = idPrestamo;
 		this.fchInicioPrestamo = fchInicioPrestamo;
 		this.fchFinPrestamo = fchFinPrestamo;
 		this.fchEntregaPrestamo = fchEntregaPrestamo;
-		this.libro = libro;
 		this.usuario = usuario;
 		this.estadoPrestamo = estadoPrestamo;
+		this.libros = libros;
 	}
 	
 	

@@ -33,9 +33,10 @@ public class Editorial {
     }
 
 
-	public Editorial(String nombreEditorial) {
+	public Editorial(long idEditorial, String nombreEditorial) {
 		super();
 		
+		this.idEditorial = idEditorial;
 		this.nombreEditorial = nombreEditorial;
 	}
     

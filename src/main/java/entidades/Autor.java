@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -27,8 +28,8 @@ public class Autor {
 	@Column(name="apellidos_autor")
 	private String apellidosAutor;
 	
-    @OneToMany(mappedBy="autor")
-    List<Rel_Autor_Libro> autoresRelAutorLibro;
+	@ManyToMany(mappedBy = "autores")
+    private List<Libro> libros;
 
     
 	//CONSTRUCTORES
@@ -37,9 +38,10 @@ public class Autor {
     }
 
 
-	public Autor(String nombreAutor, String apellidosAutor) {
+	public Autor(long idAutor, String nombreAutor, String apellidosAutor) {
 		super();
 		
+		this.idAutor = idAutor;
 		this.nombreAutor = nombreAutor;
 		this.apellidosAutor = apellidosAutor;
 	}

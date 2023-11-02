@@ -28,6 +28,34 @@ public class Acceso {
     @OneToMany(mappedBy="acceso")
     List<Usuario> usuariosConAcceso;     
 
+    
+    
+	public long getIdAcceso() {
+		return idAcceso;
+	}
+
+	public void setIdAcceso(long idAcceso) {
+		this.idAcceso = idAcceso;
+	}
+
+	public String getCodigoAcceso() {
+		return codigoAcceso;
+	}
+
+	public void setCodigoAcceso(String codigoAcceso) {
+		this.codigoAcceso = codigoAcceso;
+	}
+
+	public String getDescripcionAcceso() {
+		return descripcionAcceso;
+	}
+
+	public void setDescripcionAcceso(String descripcionAcceso) {
+		this.descripcionAcceso = descripcionAcceso;
+	}
+
+	
+	
 	//CONSTRUCTORES
 	public Acceso() {
 		super();

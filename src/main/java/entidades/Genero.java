@@ -27,6 +27,21 @@ public class Genero {
 	private String descripcionGenero;
 
     @OneToMany(mappedBy="genero")
-    List<Libro> generosLibro; 
+    List<Libro> generosLibro;
 
+    //CONSTRUCTORES
+    public Genero() {
+    	super();
+    }
+
+	public Genero(long idGenero, String nombreGenero, String descripcionGenero) {
+		super();
+		
+		this.idGenero = idGenero;
+		this.nombreGenero = nombreGenero;
+		this.descripcionGenero = descripcionGenero;
+	} 
+
+    
+    
 }

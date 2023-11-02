@@ -31,9 +31,10 @@ public class Coleccion {
     	super();
     }
 
-	public Coleccion(String nombreColeccion) {
+	public Coleccion(long idColeccion, String nombreColeccion) {
 		super();
 		
+		this.idColeccion = idColeccion;
 		this.nombreColeccion = nombreColeccion;
 	}
 }
